@@ -1,0 +1,10 @@
+@import 'styles/globals.scss';
+
+.content {
+  position: absolute;
+  border: 1px solid $grey-color;
+  background-color: white;
+  width: 99%;
+  max-height: 200px;
+  overflow: auto;
+}

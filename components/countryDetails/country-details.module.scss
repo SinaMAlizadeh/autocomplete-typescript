@@ -1,0 +1,19 @@
+.countryDetails {
+  width: 100%;
+  .title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    h4 {
+      margin-left: 10px;
+    }
+    img {
+      width: 40px;
+    }
+  }
+  .information {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 10px;
+  }
+}

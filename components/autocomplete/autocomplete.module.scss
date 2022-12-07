@@ -1,0 +1,14 @@
+@import '../../styles/globals.scss';
+.autocomplete {
+  position: relative;
+  img {
+    position: absolute;
+    right: 0;
+    top: -2px;
+  }
+  input {
+    background-color: $grey-color;
+    padding: 5px;
+    border: 0;
+  }
+}
