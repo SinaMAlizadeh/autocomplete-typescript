@@ -4,7 +4,10 @@ import styles from './autocomplete.module.scss';
 import Loading from '../../assets/loading.gif';
 import Image from 'next/image';
 
-type TAutocompleteProps<T extends Record<string, any>, K extends keyof T> = {
+type TAutocompleteProps<
+  T extends Record<string, string | number>,
+  K extends keyof T,
+> = {
   data: Array<T>;
   title: K;
   search: string;
@@ -14,7 +17,10 @@ type TAutocompleteProps<T extends Record<string, any>, K extends keyof T> = {
   loading: boolean;
 };
 
-const Autocomplete = <T extends Record<string, any>, K extends keyof T>({
+const Autocomplete = <
+  T extends Record<string, string | number>,
+  K extends keyof T,
+>({
   data,
   title,
   search,

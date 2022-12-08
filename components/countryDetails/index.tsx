@@ -1,4 +1,4 @@
-import UseSearchCountry from '../../hooks/useSearchCountry';
+import Image from 'next/image';
 import {ICountry} from '../../types/country';
 import styles from './country-details.module.scss';
 
@@ -11,7 +11,12 @@ function CountryDetails({selectedCountry}: TCountryDetails) {
     <>
       <div className={styles.countryDetails}>
         <div className={styles.title}>
-          <img src={`data:image/png;base64,${selectedCountry?.flag_png}`} />
+          <Image
+            src={`data:image/png;base64,${selectedCountry?.flag_png}`}
+            alt={selectedCountry?.admin || ''}
+            width={20}
+            height={20}
+          />
           <h4>{selectedCountry?.admin}</h4>
         </div>
 

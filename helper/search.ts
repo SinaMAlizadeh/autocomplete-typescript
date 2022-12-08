@@ -4,7 +4,8 @@ import {ICountry} from './../types/country.d';
 export const filterCountry = (
   countries: Array<ICountry>,
   search: string,
-  ipInfo: IIpInformation,
+  lat: number,
+  lng: number,
 ): Array<ICountry> => {
   let filterCountries = countries.filter(country =>
     country.admin
@@ -12,7 +13,7 @@ export const filterCountry = (
       .toLocaleLowerCase()
       .startsWith(search.trim().toLocaleLowerCase()),
   );
-  return sortCountries(filterCountries, ipInfo.lat, ipInfo.lon);
+  return sortCountries(filterCountries, lat, lng);
 };
 
 const sortCountries = (

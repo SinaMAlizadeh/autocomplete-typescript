@@ -3,7 +3,8 @@ import {ICountry} from './../types/country.d';
 import {useEffect, useState} from 'react';
 import useDebounce from './useDebounce';
 
-function UseSearchCountry() {
+function UseSearchCountry(location: ILocation) {
+  debugger;
   const [search, setSearch] = useState<string>('');
   const [countries, setCountries] = useState<Array<ICountry>>([]);
   const [selectedCountry, setSelectedCountry] = useState<ICountry>();
@@ -19,12 +20,13 @@ function UseSearchCountry() {
 
   const getByFilter = async () => {
     setLoading(true);
-    const response = await getCountryBySearch(search);
+    const response = await getCountryBySearch(search, location);
     setLoading(false);
     setCountries(response);
   };
 
   useEffect(() => {
+    debugger;
     if (selectedCountry) {
       setSearch(selectedCountry?.admin);
     }

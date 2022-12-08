@@ -1,8 +1,11 @@
+import {GetServerSideProps} from 'next';
 import Countries from '../components/countries';
 import CountryDetails from '../components/countryDetails';
 import UseSearchCountry from '../hooks/useSearchCountry';
 import styles from '../styles/Home.module.scss';
-export default function Home() {
+import {getIpInformation} from '../sevices/getIp';
+export default function Home({location}: {location: ILocation}) {
+  debugger;
   const {
     countries,
     setSearch,
@@ -10,7 +13,7 @@ export default function Home() {
     selectedCountry,
     setSelectedCountry,
     loading,
-  } = UseSearchCountry();
+  } = UseSearchCountry(location);
   return (
     <>
       <div className={styles.home}>
@@ -29,3 +32,12 @@ export default function Home() {
     </>
   );
 }
+
+export const getServerSideProps: GetServerSideProps = async () => {
+  const info = await getIpInformation();
+  const location: ILocation = {
+    lat: info.lat,
+    lng: info.lon,
+  };
+  return {props: {location: location}};
+};

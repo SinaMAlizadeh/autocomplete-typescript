@@ -1,5 +1,4 @@
-import React from 'react';
-import UseSearchCountry from '../../hooks/useSearchCountry';
+import React, {Dispatch, SetStateAction} from 'react';
 import {ICountry} from '../../types/country';
 import Autocomplete from '../autocomplete';
 import styles from './countries.module.scss';
@@ -9,9 +8,7 @@ type TCountriesTypes = {
   setSearch: React.Dispatch<React.SetStateAction<string>>;
   search: string;
   selectedCountry: ICountry | undefined;
-  setSelectedCountry: React.Dispatch<
-    React.SetStateAction<ICountry | undefined>
-  >;
+  setSelectedCountry: Dispatch<SetStateAction<ICountry | undefined>>;
   loading: boolean;
 };
 

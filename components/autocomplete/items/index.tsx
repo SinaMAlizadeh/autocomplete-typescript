@@ -2,7 +2,7 @@ import React, {Dispatch, SetStateAction} from 'react';
 import AutocompleteItem from '../item';
 import styles from './items.module.scss';
 type AutocompleteItemsProps<
-  T extends Record<string, any>,
+  T extends Record<string, string | number>,
   K extends keyof T,
 > = {
   data: Array<T>;
@@ -11,7 +11,10 @@ type AutocompleteItemsProps<
   setSelected: Dispatch<SetStateAction<T | undefined>>;
 };
 
-const AutocompleteItems = <T extends Record<string, any>, K extends keyof T>({
+const AutocompleteItems = <
+  T extends Record<string, string | number>,
+  K extends keyof T,
+>({
   data,
   title,
   search,
@@ -20,18 +23,21 @@ const AutocompleteItems = <T extends Record<string, any>, K extends keyof T>({
   return (
     <>
       <div className={styles.content}>
-        {React.Children.toArray(
-          data?.map(item => {
-            return (
-              <div onClick={() => setSelected(item)}>
-                <AutocompleteItem
-                  title={item[title]}
-                  searchLength={search?.length}
-                />
-              </div>
-            );
-          }),
-        )}
+        {data?.map((item, index) => {
+          return (
+            <div
+              key={index}
+              onClick={() => {
+                setSelected(item);
+              }}
+            >
+              <AutocompleteItem
+                title={item[title].toString()}
+                searchLength={search?.length}
+              />
+            </div>
+          );
+        })}
       </div>
     </>
   );
