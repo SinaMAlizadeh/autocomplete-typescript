@@ -5,7 +5,6 @@ import UseSearchCountry from '../hooks/useSearchCountry';
 import styles from '../styles/Home.module.scss';
 import {getIpInformation} from '../sevices/getIp';
 export default function Home({location}: {location: ILocation}) {
-  debugger;
   const {
     countries,
     setSearch,

@@ -4,7 +4,6 @@ import {useEffect, useState} from 'react';
 import useDebounce from './useDebounce';
 
 function UseSearchCountry(location: ILocation) {
-  debugger;
   const [search, setSearch] = useState<string>('');
   const [countries, setCountries] = useState<Array<ICountry>>([]);
   const [selectedCountry, setSelectedCountry] = useState<ICountry>();
@@ -26,7 +25,6 @@ function UseSearchCountry(location: ILocation) {
   };
 
   useEffect(() => {
-    debugger;
     if (selectedCountry) {
       setSearch(selectedCountry?.admin);
     }
